@@ -20,7 +20,7 @@ sh serversecuriy.sh start
 |
 |- This will start serversec
 
-sh serversecuriy.sh start
+sh serversecuriy.sh stop
 |
 |- This will stop serversec
 ```
