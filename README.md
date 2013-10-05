@@ -10,7 +10,10 @@ Current Version: v1.0
 ChangeLog
 =========
 v1.0.1
+
 Coming soon...
 
+
 v1.0
+
 Initial version
