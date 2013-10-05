@@ -3,9 +3,26 @@ ServerSec
 
 Tool: ServerSec - Server Security
 
-Usage: sh serversecuriy.sh {start|stop}
-
 Current Version: v1.0
+
+
+Installation
+=========
+cd
+wget https://raw.github.com/scriptzteam/ServerSec/master/serversec.sh
+
+
+Usage
+=========
+```
+sh serversecuriy.sh start
+|
+|- This will start serversec
+
+sh serversecuriy.sh start
+|
+|- This will stop serversec
+```
 
 ChangeLog
 =========
