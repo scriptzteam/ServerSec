@@ -1,10 +1,16 @@
 ServerSec
 =========
 
+Tool: ServerSec - Server Security
 
- |s C R i P T z - T E A M . i N F O|
+Usage: sh serversecuriy.sh {start|stop}
 
- |Tool: ServerSec - Server Security
- |Usage: sh serversecuriy.sh {start|stop}
- |Version: v1.0
+Current Version: v1.0
 
+ChangeLog
+=========
+v1.0.1
+Coming soon...
+
+v1.0
+Initial version
