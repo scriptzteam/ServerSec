@@ -14,23 +14,23 @@ wget https://raw.github.com/scriptzteam/ServerSec/master/serversec.sh
 Usage
 =========
 ```
-sh serversecuriy.sh start
+sh serversec.sh start
 |
 |- This will start serversec
 
-sh serversecuriy.sh stop
+sh serversec.sh stop
 |
 |- This will stop serversec
 
-sh serversecuriy.sh open-port -o 1337
+sh serversec.sh open-port -o 1337
 |
 |- This will allow output at port 1337
 
-sh serversecuriy.sh open-port -i 1337
+sh serversec.sh open-port -i 1337
 |
 |- This will allow input at port 1337
 
-sh serversecuriy.sh sec-php
+sh serversec.sh sec-php
 |
 |- This will secure php.ini, default location is /etc/php.ini
 |
