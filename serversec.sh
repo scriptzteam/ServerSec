@@ -3,17 +3,56 @@
 # |s C R i P T z - T E A M . i N F O|
 #
 # |Tool: ServerSec - Server Security
-# |Usage: sh serversecuriy.sh {start|stop}
-# |Version: v1.0
+# |Usage: sh serversec.sh {start|stop|open-port|sec-php}
+# |Version: v1.0.1
 #
 
 if [ $# -eq 0 ]; then
 echo "Usage:"
-echo "sh serversecuriy.sh {start|stop}"
+echo "sh serversec.sh {start|stop|open-port|sec-php}"
 exit
 fi
 
+if [ $1 == "open-port" ]; then
+if [ $2 == "-o" ]; then
+iptables -t filter -A OUTPUT -p tcp --dport $3 -j ACCEPT
+exit
+fi
+if [ $2 == "-i" ]; then
+iptables -t filter -A INPUT -p tcp --dport $3 -j ACCEPT
+exit
+fi
+exit
+fi
+
+if [ $1 == "sec-php" ]; then
+{
+sed -i '/expose_php/{s/On/Off/g}' /etc/php.ini
+sed -i '/display_errors/{s/On/Off/g}' /etc/php.ini
+sed -i '/php_errors.log/{s/;//g}' /etc/php.ini
+sed -i '/file_uploads/{s/On/Off/g}' /etc/php.ini
+sed -i '/allow_url_fopen/{s/On/Off/g}' /etc/php.ini
+sed -i '/allow_url_include/{s/On/Off/g}' /etc/php.ini
+sed -i '/;date.timezone/{s/;//g;s/=/= Europe\/Berlin/g}' /etc/php.ini
+sed -i '/cgi.fix_pathinfo\=/{s/;//g;s/1/0/g}' /etc/php.ini
+sed -i '/memory_limit/{s/128/64/g}' /etc/php.ini
+sed -i '/safe_mode/{s/Off/On/g}' /etc/php.ini
+#
+sed -i '/expose_php/{s/on/off/g}' /etc/php.ini
+sed -i '/display_errors/{s/on/off/g}' /etc/php.ini
+sed -i '/php_errors.log/{s/;//g}' /etc/php.ini
+sed -i '/file_uploads/{s/on/off/g}' /etc/php.ini
+sed -i '/allow_url_fopen/{s/on/off/g}' /etc/php.ini
+sed -i '/allow_url_include/{s/on/off/g}' /etc/php.ini
+sed -i '/;date.timezone/{s/;//g;s/=/= Europe\/Berlin/g}' /etc/php.ini
+sed -i '/cgi.fix_pathinfo\=/{s/;//g;s/1/0/g}' /etc/php.ini
+sed -i '/memory_limit/{s/128/64/g}' /etc/php.ini
+sed -i '/safe_mode/{s/off/on/g}' /etc/php.ini
+exit
+}
+
 if [ $1 == "start" ]; then
+service iptables stop
 # Clear rules
 iptables -t filter -F
 iptables -t filter -X
@@ -99,14 +138,19 @@ iptables -t filter -A INPUT -p tcp --dport 143 -j ACCEPT
 iptables -t filter -A OUTPUT -p tcp --dport 143 -j ACCEPT
 echo - IMAP : [OK]
 
-echo - Firewall [OK]
+echo - ServerSec [OK]
+service iptables save
+service iptables start
 exit
 fi
 
 if [ $1 == "stop" ]; then
-echo "Stopping Firewall... "
+service iptables stop
+echo "Stopping ServerSec... "
 iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -t filter -F
-echo "Firewall Stopped!"
+echo "ServerSec Stopped!"
+service iptables save
+exit
 fi
