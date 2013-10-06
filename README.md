@@ -49,7 +49,7 @@ sh serversec.sh sec-php
 
 ChangeLog
 =========
-*v1.0.1*
+**v1.0.1**
 
 Added support to open-port/INPUT
 
@@ -58,6 +58,6 @@ Added support to open-port/OUTPUT
 Added support to secure php.ini
 
 
-*v1.0*
+**v1.0**
 
 Initial version
