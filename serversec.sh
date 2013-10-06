@@ -29,7 +29,6 @@ if [ $1 == "sec-php" ]; then
 {
 sed -i '/expose_php/{s/On/Off/g}' /etc/php.ini
 sed -i '/display_errors/{s/On/Off/g}' /etc/php.ini
-sed -i '/php_errors.log/{s/;//g}' /etc/php.ini
 sed -i '/file_uploads/{s/On/Off/g}' /etc/php.ini
 sed -i '/allow_url_fopen/{s/On/Off/g}' /etc/php.ini
 sed -i '/allow_url_include/{s/On/Off/g}' /etc/php.ini
@@ -40,7 +39,6 @@ sed -i '/safe_mode/{s/Off/On/g}' /etc/php.ini
 #
 sed -i '/expose_php/{s/on/off/g}' /etc/php.ini
 sed -i '/display_errors/{s/on/off/g}' /etc/php.ini
-sed -i '/php_errors.log/{s/;//g}' /etc/php.ini
 sed -i '/file_uploads/{s/on/off/g}' /etc/php.ini
 sed -i '/allow_url_fopen/{s/on/off/g}' /etc/php.ini
 sed -i '/allow_url_include/{s/on/off/g}' /etc/php.ini
